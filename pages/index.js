@@ -1,16 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
+//inspired by https://www.traffic.productions/
 import styles from '../styles/Home.module.css'
 import { useRef, useEffect} from 'react';
-import { useDebounce } from 'use-debounce';
 
 export default function Home() {
 
   const container = useRef();
   const img = useRef();
-
-  let timesPerSecond = 120;
-  let wait = false;
 
   const manageMouseMove = (event) => {
     const { clientX, clientY, movementX, movementY } = event
@@ -19,14 +14,7 @@ export default function Home() {
     const y = clientY - containerPosition.y 
     img.current.style.top = y + "px";
     img.current.style.left = x + "px";
-
-    if(!wait){
-      draw(x, y)
-      wait = true;
-      setTimeout( () => {
-        wait = false;
-      }, 1000 / timesPerSecond)
-    }
+    draw(x, y)
   }
   
   const draw = (x, y) => {
@@ -44,7 +32,6 @@ export default function Home() {
         erase();
       }, 1500)
     }
-    
   }
 
   const erase = () => {
