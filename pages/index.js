@@ -42,7 +42,7 @@ export default function Home() {
     <div className={styles.main}>
 
         <div ref={container} onMouseMove={(e) => {manageMouseMove(e)}} className={styles.container}>
-          <img ref={img} className={styles.img} src="/medias/smiley.svg"></img>
+          <img ref={img} className={styles.img} src="/medias/smiley.svg" draggable="false"></img>
         </div>
 
     </div>
